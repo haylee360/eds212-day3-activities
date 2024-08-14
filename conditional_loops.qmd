@@ -1,0 +1,75 @@
+---
+title: "Conditional loops"
+format: html
+editor: source
+execute:
+  warning: false
+  message: false
+editor_options: 
+  chunk_output_type: console
+---
+
+#### Setup
+
+```{r}
+library(stringr)
+```
+
+## Conditional statements and for loops
+
+```{r}
+# Task 1 ----
+pm2_5 <- 48
+
+if (pm2_5 < 100) {
+  print("Low to moderate risk")
+} else if (pm2_5 >= 100 & pm2_5 < 150) {
+  print("Unhealthy for sensititve groups")
+} else if (pm2_5 >= 150) {
+  print("Health risk present")
+}
+```
+
+```{r}
+# Task 2 ----
+species <- c("blue whale")
+
+if (str_detect(species, "whale")) {
+  print("You found a whale!")
+}
+```
+
+```{r}
+# Task 3
+base_burrito <- 6.50
+main_ingredient <- "veggie"
+
+switch (main_ingredient,
+        "veggie" = print(base_burrito),
+        "chicken" = print(base_burrito + 3),
+        "steak" = print(base_burrito + 3.25))
+```
+
+## For loops
+
+```{r}
+# Task 4 ----
+fish <- c(8, 10, 12, 23)
+
+# don't forget seq_along!
+for (i in seq_along(fish)) {
+  prop_fish <- fish[i] / sum(fish)
+  print(prop_fish)
+}
+```
+
+```{r}
+# Task 5 ----
+month.name
+match("February", month.name)
+
+for (i in seq_along(month.name)) {
+  print(paste(month.name[i], "is month", match(month.name[i], month.name)))
+}
+```
+
