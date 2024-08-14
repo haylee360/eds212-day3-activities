@@ -42,6 +42,7 @@ class(inlet_biochem$tdn_u_m)
 # mean way 1 with across 
 mean_inlet <- inlet_biochem %>% 
   summarise(across(where(is.numeric), mean, na.rm = TRUE))
+print(mean_inlet)
 ```
 
 ```{r}
@@ -56,6 +57,9 @@ map_df(.x = inlet_biochem, .f = mean, na.rm = TRUE)
 
 ```{r}
 # mean way 4 for loop version
-
+for (i in seq_along(inlet_biochem)) {
+  mean_val <- mean(inlet_biochem[[i]], na.rm = TRUE)
+  print(mean_val)
+}
 ```
 

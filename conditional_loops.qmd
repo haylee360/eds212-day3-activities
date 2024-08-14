@@ -65,8 +65,8 @@ for (i in seq_along(fish)) {
 
 ```{r}
 # Task 5 ----
-month.name
-match("February", month.name)
+# month.name
+# match("February", month.name)
 
 for (i in seq_along(month.name)) {
   print(paste(month.name[i], "is month", match(month.name[i], month.name)))
