@@ -24,6 +24,7 @@ toolik_biochem <- read.csv("2011_Kling_Akchem.csv", na = ".") %>%
    clean_names()
 #toolik_biochem[toolik_biochem == "."] <- NA 
 toolik_biochem$site[toolik_biochem$site == "Toolik inlet"] <- "Toolik Inlet"
+# also filter(site == "Toolik inlet" | site == "Toolik Inlet")
 ```
 
 ```{r}
@@ -44,7 +45,6 @@ class(inlet_biochem$p_h)
 mean_inlet <- inlet_biochem %>% 
   summarise(across(where(is.numeric), mean, na.rm = TRUE))
 print(mean_inlet)
-
 ```
 
 ```{r}
