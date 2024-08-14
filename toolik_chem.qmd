@@ -28,14 +28,15 @@ toolik_biochem$site[toolik_biochem$site == "Toolik inlet"] <- "Toolik Inlet"
 
 ```{r}
 inlet_biochem <- toolik_biochem %>% 
-  select(site, p_h, doc_u_m, tdn_u_m) %>% 
   filter(site == "Toolik Inlet") %>% 
-  mutate(p_h = as.numeric(p_h), 
-         doc_u_m = as.numeric(doc_u_m), 
-         tdn_u_m = as.numeric(tdn_u_m)) %>% 
-  select(-1)
- # inlet_biochem <- as.character(inlet_biochem$p_h) there has to be a better way to do this part geez
-class(inlet_biochem$tdn_u_m)
+  select(p_h, doc_u_m, tdn_u_m) %>% 
+  mutate(across(everything(), as.numeric))
+class(inlet_biochem$p_h)
+
+# the slower way to do it
+ # mutate(p_h = as.numeric(p_h), 
+         # doc_u_m = as.numeric(doc_u_m), 
+         # tdn_u_m = as.numeric(tdn_u_m))
 ```
 
 ```{r}
@@ -43,6 +44,7 @@ class(inlet_biochem$tdn_u_m)
 mean_inlet <- inlet_biochem %>% 
   summarise(across(where(is.numeric), mean, na.rm = TRUE))
 print(mean_inlet)
+
 ```
 
 ```{r}
@@ -62,4 +64,3 @@ for (i in seq_along(inlet_biochem)) {
   print(mean_val)
 }
 ```
-
