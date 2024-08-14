@@ -20,9 +20,9 @@ library(janitor)
 
 ```{r}
 # read in the data
-toolik_biochem <- read.csv("2011_Kling_Akchem.csv", na.strings = "NA") %>%
+toolik_biochem <- read.csv("2011_Kling_Akchem.csv", na = ".") %>%
    clean_names()
-toolik_biochem[toolik_biochem == "."] <- NA
+#toolik_biochem[toolik_biochem == "."] <- NA 
 toolik_biochem$site[toolik_biochem$site == "Toolik inlet"] <- "Toolik Inlet"
 ```
 
